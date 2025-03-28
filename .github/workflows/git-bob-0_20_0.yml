@@ -11,9 +11,17 @@ on:
   pull_request_review_comment:
     types: [ created ]
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
 jobs:
   respond:
     runs-on: ubuntu-latest
+
+    env:
+      GIT_BOB_LLM_NAME: "openai:gpt-4o-2024-08-06"  # Change to the provider and model as provider:model
 
     steps:
     - name: Checkout code
